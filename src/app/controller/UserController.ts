@@ -4,10 +4,6 @@ import UserService from '../service/UserService';
 const usersRouter = Router();
 const userService = new UserService();
 
-usersRouter.get("/", (req: Request, res: Response) => {
-  return res.json([]);
-});
-
 usersRouter.post("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { name, email, password, passwordConfirmation } = req.body;
