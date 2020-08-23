@@ -1,0 +1,24 @@
+{
+  "type": "postgres",
+  "host": "db",
+  "port": 5432,
+  "username": "user",
+  "password": "password",
+  "database": "todos-db",
+  "synchronize": true,
+  "logging": false,
+  "entities": [
+    "src/app/model/**/*.ts"
+  ],
+  "migrations": [
+    "src/app/database/migration/**/*.ts"
+  ],
+  "subscribers": [
+    "src/app/database/subscriber/**/*.ts"
+  ],
+  "cli": {
+    "entitiesDir": "src/app/model",
+    "migrationsDir": "src/app/database/migration",
+    "subscribersDir": "src/app/database/subscriber"
+  }
+}
