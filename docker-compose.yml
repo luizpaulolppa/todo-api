@@ -17,5 +17,6 @@ services:
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: user
+      POSTGRES_DB: todos-db
     ports: ['5432:5432']
     expose: ['5432']

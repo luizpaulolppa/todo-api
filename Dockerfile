@@ -9,4 +9,4 @@ RUN yarn install --silent
 COPY . .
 
 EXPOSE 3000
-CMD ["npm", "run", "dev:server"]
+CMD ["yarn", "dev:server"]

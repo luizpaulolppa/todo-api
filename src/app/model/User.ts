@@ -19,7 +19,7 @@ export default class User {
   email: string;
 
   @Column()
-  password: number;
+  password: string;
 
   @CreateDateColumn()
   created_at: Date;
