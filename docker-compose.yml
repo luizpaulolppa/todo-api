@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  api:
+    build: .
+    container_name: todo_api
+    ports: ['3000:3000']
+    expose: ['3000']
+    links:
+      - db
+    volumes:
+      - .:/todo_api
+
+  db:
+    image: postgres:12.1
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+    ports: ['5432:5432']
+    expose: ['5432']
