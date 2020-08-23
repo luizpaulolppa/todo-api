@@ -1,4 +1,4 @@
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import UserService from '../service/UserService';
 
 const usersRouter = Router();
@@ -8,12 +8,16 @@ usersRouter.get("/", (req: Request, res: Response) => {
   return res.json([]);
 });
 
-usersRouter.post("/", async (req: Request, res: Response) => {
-  const { name, email, password, passwordConfirmation } = req.body;
+usersRouter.post("/", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { name, email, password, passwordConfirmation } = req.body;
 
-  const user = await userService.createUser({ name, email, password, passwordConfirmation });
+    const user = await userService.createUser({ name, email, password, passwordConfirmation });
 
-  return res.json(user);
+    return res.json(user);
+  } catch(ex) {
+    return next(ex);
+  }
 });
 
 export default usersRouter;
