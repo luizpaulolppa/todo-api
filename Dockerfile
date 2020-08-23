@@ -4,7 +4,7 @@ WORKDIR /todo_api
 
 COPY package*.json ./
 
-RUN npm install --silent
+RUN yarn install --silent
 
 COPY . .
 
