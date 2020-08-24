@@ -1,46 +1,47 @@
 {
-   "name": "todo-api",
-   "version": "1.0.0",
-   "description": "",
-   "main": "index.js",
-   "scripts": {
-      "build": "tsc",
-      "test": "npm test",
-      "start": "ts-node src/index.ts",
-      "dev:server": "ts-node-dev --inspect --ignore-watch node_modules src/app/server.ts",
-      "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-      "migration:run": "yarn typeorm migration:run",
-      "migration:revert": "yarn typeorm migration:revert",
-      "migration:show": "yarn typeorm migration:show"
-   },
-   "repository": {
-      "type": "git",
-      "url": "git+https://github.com/luizpaulolppa/todo-api.git"
-   },
-   "keywords": [],
-   "author": "",
-   "license": "ISC",
-   "bugs": {
-      "url": "https://github.com/luizpaulolppa/todo-api/issues"
-   },
-   "homepage": "https://github.com/luizpaulolppa/todo-api#readme",
-   "dependencies": {
-      "@types/jsonwebtoken": "^8.5.0",
-      "bcryptjs": "^2.4.3",
-      "cors": "^2.8.5",
-      "express": "^4.17.1",
-      "jsonwebtoken": "^8.5.1",
-      "pg": "^7.3.0",
-      "reflect-metadata": "^0.1.10",
-      "typeorm": "0.2.25"
-   },
-   "devDependencies": {
-      "@types/bcryptjs": "^2.4.2",
-      "@types/cors": "^2.8.7",
-      "@types/express": "^4.17.7",
-      "@types/node": "^8.0.29",
-      "ts-node": "3.3.0",
-      "ts-node-dev": "^1.0.0-pre.60",
-      "typescript": "3.3.3333"
-   }
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm test",
+    "start": "ts-node src/index.ts",
+    "dev:server": "ts-node-dev --inspect --ignore-watch node_modules src/app/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "migration:run": "yarn typeorm migration:run",
+    "migration:revert": "yarn typeorm migration:revert",
+    "migration:show": "yarn typeorm migration:show"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luizpaulolppa/todo-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luizpaulolppa/todo-api/issues"
+  },
+  "homepage": "https://github.com/luizpaulolppa/todo-api#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^7.3.0",
+    "reflect-metadata": "^0.1.10",
+    "typeorm": "0.2.25"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.17.7",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^14.6.0",
+    "ts-node": "3.3.0",
+    "ts-node-dev": "^1.0.0-pre.60",
+    "typescript": "3.3.3333"
+  }
 }

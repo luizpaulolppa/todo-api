@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 import User from "./User";
 
-@Entity("users")
+@Entity("todos")
 export default class ToDo {
 
   @PrimaryGeneratedColumn()
@@ -18,8 +18,8 @@ export default class ToDo {
   @Column()
   description: string;
 
-  @Column()
-  isImportant: number;
+  @Column({ name: "is_important", default: false })
+  isImportant: boolean;
 
   @ManyToOne(() => User)
   @JoinColumn({ name: "user_id" })

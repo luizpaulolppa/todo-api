@@ -19,7 +19,7 @@ export default class CreateNewToDo1598224667017 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "isImportant",
+            name: "is_important",
             type: "integer",
             default: 0,
           },

@@ -1,8 +1,9 @@
 import "reflect-metadata";
+import "express-async-errors";
 import express from 'express';
 import cors from 'cors';
 import routes from './routes';
-import errorHandler from "./middlewares/errorHandler";
+import errorHandler from "./middleware/errorHandler";
 import "./database";
 
 const app = express();
