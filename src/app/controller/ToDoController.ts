@@ -11,7 +11,20 @@ toDoRouter.get("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userId } = req.body;
 
-    const toDos = await toDoService.getToDosByUserId(userId);
+    const toDos = await toDoService.getToDos(userId);
+
+    return res.json(toDos);
+  } catch (ex) {
+    return next(ex);
+  }
+});
+
+toDoRouter.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { userId } = req.body;
+    const { id } = req.params;
+
+    const toDos = await toDoService.getToDo(userId, Number(id));
 
     return res.json(toDos);
   } catch (ex) {
@@ -23,9 +36,22 @@ toDoRouter.post("/", async (req: Request, res: Response, next: NextFunction) => 
   try {
     const { description, isImportant, userId } = req.body;
 
-    const toDo = await toDoService.createNewToDoByUserId({ userId, description, isImportant });
+    const toDo = await toDoService.createNewToDo({ userId, description, isImportant });
 
     return res.json(toDo);
+  } catch (ex) {
+    return next(ex);
+  }
+});
+
+toDoRouter.delete("/:id", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { userId } = req.body;
+    const { id } = req.params;
+
+    await toDoService.deleteToDo(userId, Number(id));
+
+    return res.status(200).json({ isDeleted: true });
   } catch (ex) {
     return next(ex);
   }
