@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export default class CreateNewToDo1598224667017 implements MigrationInterface {
 
@@ -16,17 +16,12 @@ export default class CreateNewToDo1598224667017 implements MigrationInterface {
           },
           {
             name: "description",
-            type: "varchar",
+            type: "text",
           },
           {
             name: "is_important",
             type: "integer",
             default: 0,
-          },
-          {
-            name: "user_id",
-            type: "integer",
-            isNullable: false
           },
           {
             name: "created_at",
@@ -41,15 +36,6 @@ export default class CreateNewToDo1598224667017 implements MigrationInterface {
         ]
       })
     );
-    const fk = new TableForeignKey({
-      name: "UserToDo",
-      columnNames: ["user_id"],
-      referencedColumnNames: ["id"],
-      referencedTableName: "users",
-      onDelete: "SET NULL",
-      onUpdate: "CASCADE"
-    });
-    await queryRunner.createForeignKey("todos", fk);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

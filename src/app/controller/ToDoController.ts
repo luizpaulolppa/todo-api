@@ -9,11 +9,11 @@ toDoRouter.use(ensureAuthenticated);
 
 toDoRouter.get("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { description, isImportant, userId } = req.body;
+    const { userId } = req.body;
 
-    const toDo = await toDoService.createNewToDoByUserId({ userId, description, isImportant });
+    const toDos = await toDoService.getToDosByUserId(userId);
 
-    return res.json(toDo);
+    return res.json(toDos);
   } catch (ex) {
     return next(ex);
   }

@@ -21,6 +21,9 @@ export default class ToDo {
   @Column({ name: "is_important", default: false })
   isImportant: boolean;
 
+  @Column()
+  user_id: number;
+
   @ManyToOne(() => User)
   @JoinColumn({ name: "user_id" })
   user: User;
