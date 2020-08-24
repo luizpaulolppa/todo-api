@@ -1,6 +1,7 @@
 import { Router, Response, NextFunction, Request } from 'express';
 import ensureAuthenticated from '../middleware/ensureAuthenticated';
 import ToDoService from '../service/ToDoService';
+import ToDo from '../model/ToDo';
 
 const toDoRouter = Router();
 const toDoService = new ToDoService();
@@ -10,8 +11,16 @@ toDoRouter.use(ensureAuthenticated);
 toDoRouter.get("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userId } = req.body;
+    const { completed } = req.query;
 
-    const toDos = await toDoService.getToDos(userId);
+    let toDos: ToDo[] = [];
+    if (completed === "true") {
+      toDos = await toDoService.getToDos({ userId, completed: true });
+    } else if (completed === "false") {
+      toDos = await toDoService.getToDos({ userId, completed: false });
+    } else {
+      toDos = await toDoService.getToDos({ userId });
+    }
 
     return res.json(toDos);
   } catch (ex) {

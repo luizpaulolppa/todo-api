@@ -3,17 +3,18 @@ import ToDoDTO from "../dto/ToDoDTO";
 import ToDo from "../model/ToDo";
 import AppError from "../error/AppError";
 import User from "../model/User";
+import QueryToDosDTO from "../dto/QueryToDosDTO";
 
 export default class ToDoService {
 
-  public async getToDos(userId: number): Promise<ToDo[]> {
+  public async getToDos({ userId, completed }: QueryToDosDTO): Promise<ToDo[]> {
     const toDoRepository = getRepository(ToDo);
     const todos = await toDoRepository.find({ where: { user_id: userId } });
     return (todos || []).map(todo => {
       delete todo.user;
       delete todo.user_id;
       return todo;
-    });
+    }).filter(todo => completed != undefined ? (todo.isCompleted === completed) : true);
   }
 
   public async getToDo(userId: number, toDoId: number): Promise<ToDo> {
