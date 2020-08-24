@@ -36,7 +36,20 @@ toDoRouter.post("/", async (req: Request, res: Response, next: NextFunction) => 
   try {
     const { description, isImportant, userId } = req.body;
 
-    const toDo = await toDoService.createNewToDo({ userId, description, isImportant });
+    const toDo = await toDoService.createNewToDo({ description, isImportant, userId });
+
+    return res.json(toDo);
+  } catch (ex) {
+    return next(ex);
+  }
+});
+
+toDoRouter.put("/:id", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { description, isImportant, userId } = req.body;
+    const { id } = req.params;
+
+    const toDo = await toDoService.updateToDo({ userId, id: Number(id), description, isImportant });
 
     return res.json(toDo);
   } catch (ex) {

@@ -29,11 +29,11 @@ export default class ToDoService {
     return todo;
   }
 
-  public async createNewToDo({ userId: id, description, isImportant }: ToDoDTO): Promise<ToDo> {
+  public async createNewToDo({ userId, description, isImportant }: ToDoDTO): Promise<ToDo> {
     const toDoRepository = getRepository(ToDo);
     const userRepository = getRepository(User);
 
-    const user = await userRepository.findOne({ where: { id } });
+    const user = await userRepository.findOne({ where: { id: userId } });
     if (!user) {
       throw new AppError("User not found.");
     }
@@ -71,6 +71,23 @@ export default class ToDoService {
     }
 
     todo.isCompleted = isCompleted;
+    return await toDoRepository.save(todo);
+  }
+
+  public async updateToDo({ userId, id, description, isImportant }: ToDoDTO): Promise<ToDo> {
+    const toDoRepository = getRepository(ToDo);
+
+    const todo = await toDoRepository.findOne({ where: { id, user_id: userId } });
+    if (!todo) {
+      throw new AppError("ToDo not found.", 204);
+    }
+
+    if (!description) {
+      throw new AppError("Description invalid.");
+    }
+
+    todo.description = description;
+    todo.isImportant = isImportant;
     return await toDoRepository.save(todo);
   }
 }
