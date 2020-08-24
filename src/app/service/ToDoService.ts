@@ -61,4 +61,16 @@ export default class ToDoService {
 
     await toDoRepository.delete(toDoId);
   }
+
+  public async markFinished(userId: number, toDoId: number, isCompleted: boolean): Promise<ToDo> {
+    const toDoRepository = getRepository(ToDo);
+
+    const todo = await toDoRepository.findOne({ where: { id: toDoId, user_id: userId } });
+    if (!todo) {
+      throw new AppError("ToDo not found.", 204);
+    }
+
+    todo.isCompleted = isCompleted;
+    return await toDoRepository.save(todo);
+  }
 }

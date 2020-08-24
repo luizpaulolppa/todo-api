@@ -44,6 +44,32 @@ toDoRouter.post("/", async (req: Request, res: Response, next: NextFunction) => 
   }
 });
 
+toDoRouter.patch("/:id/finished", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { userId } = req.body;
+    const { id } = req.params;
+
+    const toDo = await toDoService.markFinished(userId, Number(id), true);
+
+    return res.json(toDo);
+  } catch (ex) {
+    return next(ex);
+  }
+});
+
+toDoRouter.patch("/:id/unfinished", async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { userId } = req.body;
+    const { id } = req.params;
+
+    const toDo = await toDoService.markFinished(userId, Number(id), false);
+
+    return res.json(toDo);
+  } catch (ex) {
+    return next(ex);
+  }
+});
+
 toDoRouter.delete("/:id", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userId } = req.body;
