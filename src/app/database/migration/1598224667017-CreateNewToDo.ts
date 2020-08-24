@@ -24,6 +24,11 @@ export default class CreateNewToDo1598224667017 implements MigrationInterface {
             default: 0,
           },
           {
+            name: "is_completed",
+            type: "integer",
+            default: 0,
+          },
+          {
             name: "created_at",
             type: "timestamp",
             default: "now()"

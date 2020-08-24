@@ -21,6 +21,9 @@ export default class ToDo {
   @Column({ name: "is_important", default: false })
   isImportant: boolean;
 
+  @Column({ name: "is_completed", default: false })
+  isCompleted: boolean;
+
   @Column()
   user_id: number;
 
