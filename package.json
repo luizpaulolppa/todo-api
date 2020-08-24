@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "npm test",
-    "start": "ts-node src/index.ts",
+    "start": "node build/app/app.js",
     "dev:server": "ts-node-dev --inspect --ignore-watch node_modules src/app/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "migration:run": "yarn typeorm migration:run",
