@@ -1,6 +1,6 @@
 # ToDo API
 
-Essa aplicação foi desenvolvida com intuito de colocar em prática conhecimentos nas tecnologias NodeJS com API's Restful e banco de dados Postgres e TypeORM utilizando conceitos básicos.
+Essa aplicação foi desenvolvida com intuito de colocar em prática conhecimentos nas tecnologias NodeJS (Backend/API), Banco de Dados (Postgres/TypeORM), Docker e TypeScript utilizando conceitos básicos.
 
 # Dependências
 
