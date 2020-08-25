@@ -35,4 +35,4 @@ yarn migration:revert
 yarn migration:show
 
 ## Criar nova migration:
-yarn typeorm migration:create -n NAME_MIGRATE
+yarn typeorm migration:create -n MIGRATION_NAME
