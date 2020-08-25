@@ -26,13 +26,13 @@ Essa aplicação foi desenvolvida com intuito de colocar em prática conheciment
 # Comandos básicos
 
 ## Executar migrations:
-yarn typeorm migration:run
+yarn migration:run
+
+## Reverter última migration:
+yarn migration:revert
+
+## Apresentar migrations executadas:
+yarn migration:show
 
 ## Criar nova migration:
 yarn typeorm migration:create -n NAME_MIGRATE
-
-## Reverter última migration:
-yarn typeorm migration:revert
-
-## Apresentar migrations executadas:
-yarn typeorm migration:show
